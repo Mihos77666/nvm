@@ -1,0 +1,25 @@
+// Create a new advanced texture to hold the UI
+var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+
+// Import a 3D object
+BABYLON.SceneLoader.ImportMesh("", "models/", "myobject.glb", scene, function (newMeshes) {
+    // Set the position and scaling of the mesh
+    var mesh = newMeshes[0];
+    mesh.position = new BABYLON.Vector3(0, 0, 0);
+    mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+
+    // Create a new image control for the object
+    var imageControl = new BABYLON.GUI.Image("object", "textures/object.png");
+    imageControl.width = "100px";
+    imageControl.height = "100px";
+    imageControl.paddingTop = "20px";
+    imageControl.paddingBottom = "20px";
+    imageControl.paddingLeft = "20px";
+    imageControl.paddingRight = "20px";
+
+    // Attach the mesh to the image control
+    imageControl.linkWithMesh(mesh);
+
+    // Add the image control to the UI
+    advancedTexture.addControl(imageControl);
+});
