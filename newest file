@@ -1,0 +1,15 @@
+import os
+
+dir_path = "/path/to/directory"
+newest_file = None
+newest_time = 0
+
+for file in os.listdir(dir_path):
+    file_path = os.path.join(dir_path, file)
+    if os.path.isfile(file_path):
+        file_time = os.path.getmtime(file_path)
+        if file_time > newest_time:
+            newest_file = file_path
+            newest_time = file_time
+
+print(f"Newest file: {newest_file}")
